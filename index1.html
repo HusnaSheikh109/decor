@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Details</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a href="products.html">← Back to Products</a>
+  <div id="product-details"></div>
+
+  <script>
+    const product = JSON.parse(localStorage.getItem('selectedProduct'));
+    const container = document.getElementById('product-details');
+
+    if (product) {
+      container.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
+        <h2>${product.name}</h2>
+        <p><strong>Price:</strong> ${product.price}</p>
+        <p><strong>Rating:</strong> ${product.rating}</p>
+        <p><strong>Reviews:</strong> ${product.reviews}</p>
+        <p>${product.description}</p>
+        <button onclick="alert('Added to Cart')">🛒 Add to Cart</button>
+        <button onclick="alert('Added to Wishlist')">❤️ Wishlist</button>
+      `;
+    } else {
+      container.innerHTML = '<p>No product selected.</p>';
+    }
+  </script>
+</body>
+</html>
